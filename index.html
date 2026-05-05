@@ -1,100 +1,22 @@
-<style>
-  /* Le design de la page */
-  .container-marine { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background-color: #f4f7f9; }
-  .marine-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
-  
-  /* L'effet de carte qui tourne */
-  .flip-card { background-color: transparent; height: 400px; perspective: 1000px; }
-  .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-  .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-  
-  .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; }
-  
-  /* Style Recto (Image) */
-  .front { color: white; background-color: #002147; background-size: cover; background-position: center; }
-  .front h3 { background: rgba(0, 33, 71, 0.7); padding: 10px; border-radius: 5px; font-size: 1.2rem; }
-
-  /* Style Verso (Infos) */
-  .back { background-color: #002147; color: white; transform: rotateY(180deg); border: 2px solid #f1c40f; }
-  .back p { font-size: 0.95rem; line-height: 1.4; }
-  .info-box { background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #f1c40f; text-align: left; width: 100%; }
-  
-  .btn-reserve { background-color: #f1c40f; color: #002147; border: none; padding: 12px 25px; border-radius: 25px; font-weight: bold; cursor: pointer; text-decoration: none; transition: 0.3s; }
-  .btn-reserve:hover { background-color: #ffffff; transform: scale(1.05); }
-</style>
-
-<div class="container-marine">
-  <div class="marine-grid">
-
-    <!-- CARTE 1 -->
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="front" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=500');">
-          <h3>Cartographier l'action</h3>
-        </div>
-        <div class="back">
-          <p>Transformez les données stratégiques en outils pédagogiques (ZEE, câbles...).</p>
-          <div class="info-box">📍 Salle : Suffren<br>⏰ 09:00 - 10:30</div>
-          <a href="#" class="btn-reserve">Réserver ce créneau</a>
-        </div>
-      </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Marine Nationale</title>
+    <style>
+        /* Votre code de design ici */
+        .marine-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 20px; }
+        .card { width: 300px; height: 400px; background: #002147; color: white; border-radius: 15px; text-align: center; padding: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Séminaires Marine Nationale</h1>
+    <div class="marine-grid">
+        <div class="card"><h3>1. Cartographie</h3><p>Salle Suffren<br>09h00</p></div>
+        <div class="card"><h3>2. Image & Programme</h3><p>Lab Média 1<br>10h45</p></div>
+        <div class="card"><h3>3. Classe Défense</h3><p>Salle Richelieu<br>13h30</p></div>
+        <div class="card"><h3>4. Géopolitique</h3><p>Salle Géo<br>15h15</p></div>
+        <div class="card"><h3>5. Marine au féminin</h3><p>Salon d'Honneur<br>17h00</p></div>
     </div>
-
-    <!-- CARTE 2 -->
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="front" style="background-image: url('https://images.unsplash.com/photo-1492691523567-69b9a61e0d2b?q=80&w=500');">
-          <h3>L'image au service des programmes</h3>
-        </div>
-        <div class="back">
-          <p>Exploitez les ressources visuelles de la Marine pour illustrer vos cours.</p>
-          <div class="info-box">📍 Lab Média 1<br>⏰ 10:45 - 12:15</div>
-          <a href="#" class="btn-reserve">Réserver ce créneau</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARTE 3 -->
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="front" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=500');">
-          <h3>Classe de Défense</h3>
-        </div>
-        <div class="back">
-          <p>Construire, animer et financer votre projet de classe de défense.</p>
-          <div class="info-box">📍 Salle Richelieu<br>⏰ 13:30 - 15:00</div>
-          <a href="#" class="btn-reserve">Réserver ce créneau</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARTE 4 -->
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="front" style="background-image: url('https://images.unsplash.com/photo-1451187530220-47e4ee59f7d8?q=80&w=500');">
-          <h3>Géographie et HGGSP</h3>
-        </div>
-        <div class="back">
-          <p>Utilisez les missions navales pour enseigner les enjeux géopolitiques mondiaux.</p>
-          <div class="info-box">📍 Salle Géo<br>⏰ 15:15 - 16:45</div>
-          <a href="#" class="btn-reserve">Réserver ce créneau</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARTE 5 -->
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="front" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=500');">
-          <h3>La Marine au féminin</h3>
-        </div>
-        <div class="back">
-          <p>L'égalité et l'histoire des femmes à travers l'engagement maritime.</p>
-          <div class="info-box">📍 Salon d'Honneur<br>⏰ 17:00 - 18:30</div>
-          <a href="#" class="btn-reserve">Réserver ce créneau</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div> 
+</body>
+</html>
