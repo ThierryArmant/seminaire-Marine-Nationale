@@ -2,120 +2,166 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Séminaires Marine Nationale</title>
+    <title>Inscriptions Séminaires Marine</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #001220; color: white; padding: 40px; margin: 0; }
-        .header { text-align: center; margin-bottom: 50px; }
-        .header h1 { color: #f1c40f; text-transform: uppercase; letter-spacing: 2px; }
-        
-        .marine-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        
-        .flip-card { background-color: transparent; height: 480px; perspective: 1000px; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; border-radius: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #001220; color: white; padding: 20px; margin: 0; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { color: #f1c40f; text-transform: uppercase; margin-bottom: 5px; }
+        .marine-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1400px; margin: 0 auto; }
+        .flip-card { height: 520px; perspective: 1000px; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; border-radius: 15px; }
         .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-        
         .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; display: flex; flex-direction: column; box-sizing: border-box; }
-        
-        .front { background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.1); justify-content: flex-end; padding: 20px; }
-        .front h3 { background: rgba(0, 33, 71, 0.95); padding: 12px; border-radius: 5px; font-size: 1.1rem; border: 1px solid #f1c40f; width: 100%; margin: 0; }
-
-        .back { background-color: #002147; transform: rotateY(180deg); border: 2px solid #f1c40f; justify-content: center; padding: 25px; }
-        .info-box { background: rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #f1c40f; text-align: left; }
-        
-        .btn-group { display: flex; flex-direction: column; gap: 10px; }
-        .btn { background: #f1c40f; color: #002147; padding: 10px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: 0.3s; }
-        .btn:hover { background: white; transform: scale(1.03); }
-        .room-label { font-size: 0.85rem; color: #f1c40f; margin-bottom: 5px; display: block; text-transform: uppercase; font-weight: bold; }
+        .front { background-size: cover; background-position: center; justify-content: flex-end; padding: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .front h3 { background: rgba(0, 33, 71, 0.95); padding: 10px; border-radius: 5px; font-size: 1rem; border: 1px solid #f1c40f; margin: 0; }
+        .back { background-color: #002147; transform: rotateY(180deg); border: 2px solid #f1c40f; justify-content: center; padding: 15px; }
+        .res-zone { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; margin-bottom: 12px; border: 1px solid rgba(241, 196, 15, 0.2); }
+        .res-zone label { display: block; font-size: 0.75rem; color: #f1c40f; margin-bottom: 5px; font-weight: bold; }
+        input[type="email"] { width: 100%; padding: 6px; border-radius: 4px; border: none; margin-bottom: 6px; box-sizing: border-box; font-size: 0.8rem; }
+        .btn-send { background: #f1c40f; color: #002147; border: none; width: 100%; padding: 7px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.8rem; }
+        .btn-send:hover { background: white; }
+        .room { font-size: 0.8rem; color: #f1c40f; text-align: center; margin-bottom: 10px; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>⚓ Séminaires Marine Nationale</h1>
-    <p>Sessions identiques proposées le matin et l'après-midi</p>
+    <h1>⚓ Inscriptions aux Séminaires</h1>
+    <p>Choisissez votre créneau (Matin ou Après-midi)</p>
 </div>
 
 <div class="marine-grid">
-    <!-- 1. Cartographie -->
+    <!-- CARTE 1 -->
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="front" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=600');">
                 <h3>Cartographier l'action et les enjeux</h3>
             </div>
             <div class="back">
-                <span class="room-label">📍 Salle Suffren</span>
-                <div class="btn-group">
-                    <a href="#" class="btn">Session Matin : 10h45 - 12h00</a>
-                    <a href="#" class="btn">Session Après-midi : 15h00 - 16h30</a>
+                <div class="room">📍 SALLE SUFFREN</div>
+                <div class="res-zone">
+                    <label>MATIN : 10h45 - 12h00</label>
+                    <input type="email" id="email1_1" placeholder="Votre email...">
+                    <button class="btn-send" onclick="reserver('Cartographie', 'Matin (10h45)', 'email1_1')">Réserver ce créneau</button>
+                </div>
+                <div class="res-zone">
+                    <label>APRÈS-MIDI : 15h00 - 16h30</label>
+                    <input type="email" id="email1_2" placeholder="Votre email...">
+                    <button class="btn-send" onclick="reserver('Cartographie', 'A-M (15h00)', 'email1_2')">Réserver ce créneau</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 2. L'image -->
+    <!-- CARTE 2 -->
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="front" style="background-image: url('https://images.unsplash.com/photo-1492691523567-69b9a61e0d2b?w=600');">
                 <h3>L'image au service des programmes</h3>
             </div>
             <div class="back">
-                <span class="room-label">📍 Lab Média 1</span>
-                <div class="btn-group">
-                    <a href="#" class="btn">Session Matin : 10h45 - 12h00</a>
-                    <a href="#" class="btn">Session Après-midi : 15h00 - 16h30</a>
+                <div class="room">📍 LAB MÉDIA 1</div>
+                <div class="res-zone">
+                    <label>MATIN : 10h45 - 12h00</label>
+                    <input type="email" id="email2_1" placeholder="Votre email...">
+                    <button class="btn-send" onclick="reserver('Image', 'Matin (10h45)', 'email2_1')">Réserver ce créneau</button>
+                </div>
+                <div class="res-zone">
+                    <label>APRÈS-MIDI : 15h00 - 16h30</label>
+                    <input type="email" id="email2_2" placeholder="Votre email...">
+                    <button class="btn-send" onclick="reserver('Image', 'A-M (15h00)', 'email2_2')">Réserver ce créneau</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 3. Classe de défense -->
+    <!-- CARTE 3 -->
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="front" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600');">
                 <h3>Construire une Classe de Défense</h3>
             </div>
             <div class="back">
-                <span class="room-label">📍 Salle Richelieu</span>
-                <div class="btn-group">
-                    <a href="#" class="btn">Session Matin : 10h45 - 12h00</a>
-                    <a href="#" class="btn">Session Après-midi : 15h00 - 16h30</a>
+                <div class="room">📍 SALLE RICHELIEU</div>
+                <div class="res-zone">
+                    <label>MATIN : 10h45 - 12h00</label>
+                    <input type="email" id="email3_1" placeholder="Votre email...">
+                    <button class="btn-send" onclick="reserver('Classe Défense', 'Matin (10h45)', 'email3_1')">Réserver ce créneau</button>
+                </div>
+                <div class="res-zone">
+                    <label>APRÈS-MIDI : 15h00 - 16h30</label>
+                    <input type="email" id="email3_2" placeholder="Votre email...">
+                    <button class="btn-send" onclick="reserver('Classe Défense', 'A-M (15h00)', 'email3_2')">Réserver ce créneau</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 4. Géo/HGGSP -->
+    <!-- CARTE 4 -->
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="front" style="background-image: url('https://images.unsplash.com/photo-1451187530220-47e4ee59f7d8?w=600');">
                 <h3>Missions navales et HGGSP</h3>
             </div>
             <div class="back">
-                <span class="room-label">📍 Salle Géo</span>
-                <div class="btn-group">
-                    <a href="#" class="btn">Session Matin : 10h45 - 12h00</a>
-                    <a href="#" class="btn">Session Après-midi : 15h00 - 16h30</a>
+                <div class="room">📍 SALLE GÉO</div>
+                <div class="res-zone">
+                    <label>MATIN : 10h45 - 12h00</label>
+                    <input type="email" id="email4_1" placeholder="Votre email...">
+                    <button class="btn-send" onclick="reserver('HGGSP', 'Matin (10h45)', 'email4_1')">Réserver ce créneau</button>
+                </div>
+                <div class="res-zone">
+                    <label>APRÈS-MIDI : 15h00 - 16h30</label>
+                    <input type="email" id="email4_2" placeholder="Votre email...">
+                    <button class="btn-send" onclick="reserver('HGGSP', 'A-M (15h00)', 'email4_2')">Réserver ce créneau</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 5. Féminin -->
+    <!-- CARTE 5 -->
     <div class="flip-card">
         <div class="flip-card-inner">
             <div class="front" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600');">
                 <h3>La Marine au féminin</h3>
             </div>
             <div class="back">
-                <span class="room-label">📍 Salon d'Honneur</span>
-                <div class="btn-group">
-                    <a href="#" class="btn">Session Matin : 10h45 - 12h00</a>
-                    <a href="#" class="btn">Session Après-midi : 15h00 - 16h30</a>
+                <div class="room">📍 SALON HONNEUR</div>
+                <div class="res-zone">
+                    <label>MATIN : 10h45 - 12h00</label>
+                    <input type="email" id="email5_1" placeholder="Votre email...">
+                    <button class="btn-send" onclick="reserver('Féminin', 'Matin (10h45)', 'email5_1')">Réserver ce créneau</button>
+                </div>
+                <div class="res-zone">
+                    <label>APRÈS-MIDI : 15h00 - 16h30</label>
+                    <input type="email" id="email5_2" placeholder="Votre email...">
+                    <button class="btn-send" onclick="reserver('Féminin', 'A-M (15h00)', 'email5_2')">Réserver ce créneau</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+function reserver(seminaire, creneau, inputId) {
+    const email = document.getElementById(inputId).value;
+    if(!email || !email.includes('@')) { alert("Veuillez saisir un email valide"); return; }
+    
+    // REMPLACER CI-DESSOUS PAR VOTRE URL GOOGLE SCRIPT
+    const url = "https://script.google.com/macros/s/AKfycbzDK_8eI_omVTgURetY0mjJjDnCb0oKCF8FIzn_3Qep7laxKFLQz3bqBZIfYDnRL0te/exec";
+    
+    fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        cache: "no-cache",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ seminaire: seminaire, creneau: creneau, email: email })
+    }).then(() => {
+        alert("Demande envoyée pour " + seminaire + " (" + creneau + ")");
+        document.getElementById(inputId).value = "";
+    }).catch(err => alert("Erreur : " + err));
+}
+</script>
 
 </body>
 </html>
