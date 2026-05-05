@@ -2,141 +2,55 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inscriptions Séminaires Marine Nationale</title>
     <style>
-        /* CONFIGURATION GÉNÉRALE */
-        body { 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            background-color: #001220; 
-            color: white; 
-            padding: 20px; 
-            margin: 0; 
-        }
-        .header { text-align: center; margin-bottom: 40px; }
-        .header h1 { color: #f1c40f; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
-        .header p { opacity: 0.8; }
-
-        /* GRILLE DES CARTES */
+        body { font-family: 'Segoe UI', sans-serif; background-color: #001220; color: white; padding: 15px; margin: 0; }
+        .header { text-align: center; margin-bottom: 25px; }
+        .header h1 { color: #f1c40f; text-transform: uppercase; font-size: 1.4rem; margin-bottom: 5px; }
+        
         .marine-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 25px; 
-            max-width: 1300px; 
+            gap: 20px; 
+            max-width: 1200px; 
             margin: 0 auto; 
         }
 
-        /* EFFET DE RETOURNEMENT (FLIP) */
+        /* --- TAILLE DES CARTES --- */
+        /* Par défaut (Ordinateur) */
         .flip-card { height: 480px; perspective: 1000px; cursor: pointer; }
-        .flip-card-inner { 
-            position: relative; 
-            width: 100%; 
-            height: 100%; 
-            transition: transform 0.6s; 
-            transform-style: preserve-3d; 
-            border-radius: 15px; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-        }
-        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
 
-        .front, .back { 
-            position: absolute; 
-            width: 100%; 
-            height: 100%; 
-            backface-visibility: hidden; 
-            border-radius: 15px; 
-            display: flex; 
-            flex-direction: column; 
-            box-sizing: border-box; 
-        }
-
-        /* RECTO (IMAGE + TITRE) */
-        .front { 
-            background-size: cover; 
-            background-position: center; 
-            justify-content: flex-end; 
-            padding: 20px; 
-            border: 1px solid rgba(255,255,255,0.1); 
-        }
-        .front h3 { 
-            background: rgba(0, 33, 71, 0.95); 
-            padding: 12px; 
-            border-radius: 8px; 
-            font-size: 1.1rem; 
-            border: 1px solid #f1c40f; 
-            margin: 0; 
-            text-align: center; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        /* VERSO (FORMULAIRE) */
-        .back { 
-            background-color: #002147; 
-            transform: rotateY(180deg); 
-            border: 2px solid #f1c40f; 
-            justify-content: center; 
-            padding: 20px; 
-        }
-        .room-tag { 
-            font-size: 0.9rem; 
-            color: #f1c40f; 
-            text-align: center; 
-            margin-bottom: 15px; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-        }
-        .res-zone { 
-            background: rgba(255,255,255,0.05); 
-            padding: 12px; 
-            border-radius: 8px; 
-            margin-bottom: 15px; 
-            border: 1px solid rgba(241, 196, 15, 0.2); 
-        }
-        .res-zone label { 
-            display: block; 
-            font-size: 0.8rem; 
-            color: #f1c40f; 
-            margin-bottom: 8px; 
-            font-weight: bold; 
-        }
-        input[type="email"] { 
-            width: 100%; 
-            padding: 10px; 
-            border-radius: 5px; 
-            border: none; 
-            margin-bottom: 8px; 
-            box-sizing: border-box; 
-            background: #fff; 
-            color: #000; 
-        }
-        .btn-send { 
-            background: #f1c40f; 
-            color: #002147; 
-            border: none; 
-            width: 100%; 
-            padding: 10px; 
-            border-radius: 5px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            transition: 0.3s; 
-        }
-        .btn-send:hover { background: white; transform: scale(1.02); }
-
-        /* OPTIMISATION SMARTPHONE */
+        /* Ajustement Mobile (Écrans < 600px) */
         @media screen and (max-width: 600px) {
-            .flip-card { height: 380px; }
-            .header h1 { font-size: 1.3rem; }
-            .front h3 { font-size: 0.95rem; }
-            .res-zone { padding: 8px; margin-bottom: 10px; }
-            .btn-send { padding: 8px; font-size: 0.8rem; }
+            .flip-card { height: 320px !important; } /* On force une taille réduite */
+            .front h3 { font-size: 0.9rem !important; padding: 8px !important; }
+            .res-zone { padding: 8px !important; margin-bottom: 8px !important; }
+            .btn-send { padding: 8px !important; font-size: 0.8rem !important; }
+            .room-tag { font-size: 0.75rem !important; margin-bottom: 8px !important; }
+            input[type="email"] { padding: 7px !important; font-size: 0.8rem !important; }
         }
+
+        /* --- STRUCTURE FLIP --- */
+        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; display: flex; flex-direction: column; box-sizing: border-box; }
+        
+        .front { background-size: cover; background-position: center; justify-content: flex-end; padding: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .front h3 { background: rgba(0, 33, 71, 0.95); padding: 10px; border-radius: 5px; border: 1px solid #f1c40f; margin: 0; text-align: center; }
+        
+        .back { background-color: #002147; transform: rotateY(180deg); border: 2px solid #f1c40f; justify-content: center; padding: 15px; }
+        .room-tag { color: #f1c40f; text-align: center; font-weight: bold; }
+        .res-zone { background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(241, 196, 15, 0.2); }
+        input[type="email"] { width: 100%; border-radius: 4px; border: none; background: white; color: black; }
+        .btn-send { background: #f1c40f; color: #002147; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
 <div class="header">
     <h1>⚓ Inscriptions Séminaires</h1>
-    <p>Survolez une thématique pour réserver votre créneau</p>
+    <p>Survolez ou tapez sur une carte</p>
 </div>
 
 <div class="marine-grid">
@@ -148,16 +62,8 @@
             </div>
             <div class="back">
                 <div class="room-tag">📍 Salle Suffren</div>
-                <div class="res-zone">
-                    <label>MATIN : 10h45 - 12h00</label>
-                    <input type="email" id="email1_1" placeholder="Votre email...">
-                    <button class="btn-send" onclick="reserver('Cartographie', '10h45-12h00', 'email1_1')">Réserver matin</button>
-                </div>
-                <div class="res-zone">
-                    <label>APRÈS-MIDI : 15h00 - 16h30</label>
-                    <input type="email" id="email1_2" placeholder="Votre email...">
-                    <button class="btn-send" onclick="reserver('Cartographie', '15h00-16h30', 'email1_2')">Réserver après-midi</button>
-                </div>
+                <div class="res-zone"><label>MATIN : 10h45</label><input type="email" id="e1_1" placeholder="Email..."><button class="btn-send" onclick="reserver('Carto', '10h45', 'e1_1')">Réserver</button></div>
+                <div class="res-zone"><label>A-M : 15h00</label><input type="email" id="e1_2" placeholder="Email..."><button class="btn-send" onclick="reserver('Carto', '15h00', 'e1_2')">Réserver</button></div>
             </div>
         </div>
     </div>
@@ -170,16 +76,8 @@
             </div>
             <div class="back">
                 <div class="room-tag">📍 Lab Média 1</div>
-                <div class="res-zone">
-                    <label>MATIN : 10h45 - 12h00</label>
-                    <input type="email" id="email2_1" placeholder="Votre email...">
-                    <button class="btn-send" onclick="reserver('Image', '10h45-12h00', 'email2_1')">Réserver matin</button>
-                </div>
-                <div class="res-zone">
-                    <label>APRÈS-MIDI : 15h00 - 16h30</label>
-                    <input type="email" id="email2_2" placeholder="Votre email...">
-                    <button class="btn-send" onclick="reserver('Image', '15h00-16h30', 'email2_2')">Réserver après-midi</button>
-                </div>
+                <div class="res-zone"><label>MATIN : 10h45</label><input type="email" id="e2_1" placeholder="Email..."><button class="btn-send" onclick="reserver('Image', '10h45', 'e2_1')">Réserver</button></div>
+                <div class="res-zone"><label>A-M : 15h00</label><input type="email" id="e2_2" placeholder="Email..."><button class="btn-send" onclick="reserver('Image', '15h00', 'e2_2')">Réserver</button></div>
             </div>
         </div>
     </div>
@@ -192,16 +90,8 @@
             </div>
             <div class="back">
                 <div class="room-tag">📍 Salle Richelieu</div>
-                <div class="res-zone">
-                    <label>MATIN : 10h45 - 12h00</label>
-                    <input type="email" id="email3_1" placeholder="Votre email...">
-                    <button class="btn-send" onclick="reserver('Classe Défense', '10h45-12h00', 'email3_1')">Réserver matin</button>
-                </div>
-                <div class="res-zone">
-                    <label>APRÈS-MIDI : 15h00 - 16h30</label>
-                    <input type="email" id="email3_2" placeholder="Votre email...">
-                    <button class="btn-send" onclick="reserver('Classe Défense', '15h00-16h30', 'email3_2')">Réserver après-midi</button>
-                </div>
+                <div class="res-zone"><label>MATIN : 10h45</label><input type="email" id="e3_1" placeholder="Email..."><button class="btn-send" onclick="reserver('CDSG', '10h45', 'e3_1')">Réserver</button></div>
+                <div class="res-zone"><label>A-M : 15h00</label><input type="email" id="e3_2" placeholder="Email..."><button class="btn-send" onclick="reserver('CDSG', '15h00', 'e3_2')">Réserver</button></div>
             </div>
         </div>
     </div>
@@ -214,16 +104,8 @@
             </div>
             <div class="back">
                 <div class="room-tag">📍 Salle Géo</div>
-                <div class="res-zone">
-                    <label>MATIN : 10h45 - 12h00</label>
-                    <input type="email" id="email4_1" placeholder="Votre email...">
-                    <button class="btn-send" onclick="reserver('HGGSP', '10h45-12h00', 'email4_1')">Réserver matin</button>
-                </div>
-                <div class="res-zone">
-                    <label>APRÈS-MIDI : 15h00 - 16h30</label>
-                    <input type="email" id="email4_2" placeholder="Votre email...">
-                    <button class="btn-send" onclick="reserver('HGGSP', '15h00-16h30', 'email4_2')">Réserver après-midi</button>
-                </div>
+                <div class="res-zone"><label>MATIN : 10h45</label><input type="email" id="e4_1" placeholder="Email..."><button class="btn-send" onclick="reserver('HGGSP', '10h45', 'e4_1')">Réserver</button></div>
+                <div class="res-zone"><label>A-M : 15h00</label><input type="email" id="e4_2" placeholder="Email..."><button class="btn-send" onclick="reserver('HGGSP', '15h00', 'e4_2')">Réserver</button></div>
             </div>
         </div>
     </div>
@@ -236,64 +118,20 @@
             </div>
             <div class="back">
                 <div class="room-tag">📍 Salon d'Honneur</div>
-                <div class="res-zone">
-                    <label>MATIN : 10h45 - 12h00</label>
-                    <input type="email" id="email5_1" placeholder="Votre email...">
-                    <button class="btn-send" onclick="reserver('Féminin', '10h45-12h00', 'email5_1')">Réserver matin</button>
-                </div>
-                <div class="res-zone">
-                    <label>APRÈS-MIDI : 15h00 - 16h30</label>
-                    <input type="email" id="email5_2" placeholder="Votre email...">
-                    <button class="btn-send" onclick="reserver('Féminin', '15h00-16h30', 'email5_2')">Réserver après-midi</button>
-                </div>
+                <div class="res-zone"><label>MATIN : 10h45</label><input type="email" id="e5_1" placeholder="Email..."><button class="btn-send" onclick="reserver('Femme', '10h45', 'e5_1')">Réserver</button></div>
+                <div class="res-zone"><label>A-M : 15h00</label><input type="email" id="e5_2" placeholder="Email..."><button class="btn-send" onclick="reserver('Femme', '15h00', 'e5_2')">Réserver</button></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-/**
- * Fonction d'envoi vers Google Sheets
- */
 function reserver(seminaire, creneau, inputId) {
-    const emailField = document.getElementById(inputId);
-    const email = emailField.value;
-
-    // Validation simple de l'email
-    if(!email || !email.includes('@')) {
-        alert("Veuillez saisir une adresse email valide.");
-        return;
-    }
-
-    // Remplacez par l'URL copiée depuis Google Apps Script
-    const scriptURL = "https://script.google.com/macros/s/AKfycbzDK_8eI_omVTgURetY0mjJjDnCb0oKCF8FIzn_3Qep7laxKFLQz3bqBZIfYDnRL0te/exec";
-
-    // Affichage d'un message d'attente sur le bouton
-    const btn = document.querySelector(`button[onclick*="${inputId}"]`);
-    const originalText = btn.innerText;
-    btn.innerText = "Envoi en cours...";
-    btn.disabled = true;
-
-    fetch(scriptURL, {
-        method: "POST",
-        mode: "no-cors",
-        cache: "no-cache",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
-            seminaire: seminaire, 
-            creneau: creneau, 
-            email: email 
-        })
-    }).then(() => {
-        alert("Succès ! Votre réservation pour [" + seminaire + "] à [" + creneau + "] a été envoyée.");
-        emailField.value = ""; // On vide le champ
-    }).catch(err => {
-        alert("Une erreur est survenue lors de l'envoi. Vérifiez votre connexion.");
-        console.error(err);
-    }).finally(() => {
-        btn.innerText = originalText;
-        btn.disabled = false;
-    });
+    const email = document.getElementById(inputId).value;
+    if(!email || !email.includes('@')) { alert("Email invalide"); return; }
+    const url = "https://script.google.com/macros/s/AKfycbzDK_8eI_omVTgURetY0mjJjDnCb0oKCF8FIzn_3Qep7laxKFLQz3bqBZIfYDnRL0te/exec";
+    fetch(url, { method: "POST", mode: "no-cors", body: JSON.stringify({ seminaire: seminaire, creneau: creneau, email: email }) })
+    .then(() => { alert("Inscrit à : " + seminaire); document.getElementById(inputId).value = ""; });
 }
 </script>
 
