@@ -4,102 +4,99 @@
     <meta charset="UTF-8">
     <title>Séminaires Marine Nationale</title>
     <style>
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #001220; color: white; margin: 0; padding: 40px; }
-        .header { text-align: center; margin-bottom: 50px; }
-        .header h1 { font-size: 2.5rem; letter-spacing: 2px; text-transform: uppercase; color: #f1c40f; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f7f9; margin: 0; padding: 40px; }
+        .header { text-align: center; color: #002147; margin-bottom: 40px; }
+        .marine-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
         
-        .marine-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1300px; margin: 0 auto; }
-        
-        .flip-card { background-color: transparent; height: 480px; perspective: 1000px; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; border-radius: 15px; }
+        .flip-card { background-color: transparent; height: 450px; perspective: 1000px; cursor: pointer; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
         .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
         
-        .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; display: flex; flex-direction: column; justify-content: flex-end; padding: 0; box-sizing: border-box; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+        .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 25px; box-sizing: border-box; }
         
-        /* Titre sur le devant avec dégradé pour lisibilité */
-        .front-content { background: linear-gradient(transparent, rgba(0,33,71,0.95)); width: 100%; padding: 20px; box-sizing: border-box; }
-        .front h3 { margin: 0; font-size: 1.3rem; line-height: 1.2; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        /* Recto avec de vraies images */
+        .front { color: white; background-size: cover; background-position: center; border: 1px solid #ddd; }
+        .front h3 { background: rgba(0, 33, 71, 0.9); padding: 15px; border-radius: 10px; font-size: 1.2rem; line-height: 1.4; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
         
-        /* Style du verso */
-        .back { background-color: #002147; transform: rotateY(180deg); justify-content: center; padding: 30px; border: 2px solid #f1c40f; }
-        .info-box { background: rgba(241, 196, 15, 0.1); padding: 15px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #f1c40f; text-align: left; }
-        
-        .btn-reserve { background-color: #f1c40f; color: #002147; border: none; padding: 15px 25px; border-radius: 5px; font-weight: bold; text-decoration: none; transition: 0.3s; }
-        .btn-reserve:hover { background-color: white; letter-spacing: 1px; }
+        /* Verso */
+        .back { background-color: #002147; color: white; transform: rotateY(180deg); border: 3px solid #f1c40f; }
+        .info-box { background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin: 20px 0; width: 100%; border-left: 5px solid #f1c40f; text-align: left; }
+        .btn-reserve { background-color: #f1c40f; color: #002147; border: none; padding: 12px 25px; border-radius: 25px; font-weight: bold; text-decoration: none; transition: 0.3s; }
+        .btn-reserve:hover { background-color: white; transform: scale(1.05); }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>Espace Pédagogique Marine Nationale</h1>
-    <p>Survolez une thématique pour découvrir les détails de la session</p>
+    <h1>Formations et Séminaires Marine Nationale</h1>
+    <p>Survolez une carte pour découvrir les détails du créneau</p>
 </div>
 
 <div class="marine-grid">
-    <!-- 1. Cartographie -->
+    <!-- 1. Cartographie (Image Radar/Carte) -->
     <div class="flip-card">
         <div class="flip-card-inner">
-            <div class="front" style="background: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=600') center/cover;">
-                <div class="front-content"><h3>Cartographier l'action et les enjeux</h3></div>
+            <div class="front" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=600');">
+                <h3>Cartographier l'action et les enjeux</h3>
             </div>
             <div class="back">
-                <p>Maîtrisez les outils numériques pour enseigner la géostratégie des mers.</p>
+                <p>Enjeux de souveraineté et zones économiques exclusives.</p>
                 <div class="info-box">📍 Salle Suffren<br>⏰ 09:00 - 10:30</div>
                 <a href="#" class="btn-reserve">S'inscrire</a>
             </div>
         </div>
     </div>
 
-    <!-- 2. L'image au service -->
+    <!-- 2. L'image au service (Image Appareil Photo) -->
     <div class="flip-card">
         <div class="flip-card-inner">
-            <div class="front" style="background: url('https://images.unsplash.com/photo-1492691523567-69b9a61e0d2b?auto=format&fit=crop&w=600') center/cover;">
-                <div class="front-content"><h3>L'image au service des programmes</h3></div>
+            <div class="front" style="background-image: url('https://images.unsplash.com/photo-1492691523567-69b9a61e0d2b?q=80&w=600');">
+                <h3>L'image au service des programmes</h3>
             </div>
             <div class="back">
-                <p>Exploitation pédagogique des archives photos et vidéos de la Marine.</p>
+                <p>Exploiter les fonds audiovisuels de la Marine Nationale.</p>
                 <div class="info-box">📍 Lab Média 1<br>⏰ 10:45 - 12:15</div>
                 <a href="#" class="btn-reserve">S'inscrire</a>
             </div>
         </div>
     </div>
 
-    <!-- 3. Classe de Défense -->
+    <!-- 3. Classe de Défense (Image Collaboration) -->
     <div class="flip-card">
         <div class="flip-card-inner">
-            <div class="front" style="background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600') center/cover;">
-                <div class="front-content"><h3>Construire une Classe de Défense</h3></div>
+            <div class="front" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=600');">
+                <h3>Construire une Classe de Défense</h3>
             </div>
             <div class="back">
-                <p>Méthodologie, partenariats et financement de votre projet CDSG.</p>
+                <p>Méthodologie et financement de vos projets CDSG.</p>
                 <div class="info-box">📍 Salle Richelieu<br>⏰ 13:30 - 15:00</div>
                 <a href="#" class="btn-reserve">S'inscrire</a>
             </div>
         </div>
     </div>
 
-    <!-- 4. Géographie et HGGSP -->
+    <!-- 4. Géo/HGGSP (Image Vue Satellite/Monde) -->
     <div class="flip-card">
         <div class="flip-card-inner">
-            <div class="front" style="background: url('https://images.unsplash.com/photo-1451187530220-47e4ee59f7d8?auto=format&fit=crop&w=600') center/cover;">
-                <div class="front-content"><h3>Missions navales et HGGSP</h3></div>
+            <div class="front" style="background-image: url('https://images.unsplash.com/photo-1451187530220-47e4ee59f7d8?q=80&w=600');">
+                <h3>Missions navales et HGGSP</h3>
             </div>
             <div class="back">
-                <p>La puissance maritime française au travers des programmes du Lycée.</p>
+                <p>La puissance maritime française dans la géopolitique mondiale.</p>
                 <div class="info-box">📍 Salle Géo<br>⏰ 15:15 - 16:45</div>
                 <a href="#" class="btn-reserve">S'inscrire</a>
             </div>
         </div>
     </div>
 
-    <!-- 5. La Marine au féminin -->
+    <!-- 5. Marine au féminin (Image Portrait Professionnel) -->
     <div class="flip-card">
         <div class="flip-card-inner">
-            <div class="front" style="background: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600') center/cover;">
-                <div class="front-content"><h3>La Marine au féminin</h3></div>
+            <div class="front" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600');">
+                <h3>La Marine au féminin</h3>
             </div>
             <div class="back">
-                <p>Enjeux d'égalité et portraits de femmes marins en Histoire et EMC.</p>
+                <p>Enjeux d'égalité et portraits de femmes marins (Histoire/EMC).</p>
                 <div class="info-box">📍 Salon d'Honneur<br>⏰ 17:00 - 18:30</div>
                 <a href="#" class="btn-reserve">S'inscrire</a>
             </div>
